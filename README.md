@@ -86,8 +86,11 @@ Insurewise is built on an open-source framework that emphasizes flexibility, tra
    ```
 
 ### Backend
-
-1. **Set Up a Virtual Environment:**
+1. **Clone the Backend repo:**
+     ```bash
+     git clone https://github.com/rraj-official/quark-hackathon-backend.git
+     ```
+2. **Set Up a Virtual Environment:**
 
    - **macOS/Linux:**
 
@@ -103,13 +106,13 @@ Insurewise is built on an open-source framework that emphasizes flexibility, tra
      venv\Scripts\activate
      ```
 
-2. **Install Required Python Packages:**
+3. **Install Required Python Packages:**
 
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Run the Backend Server:**
+4. **Run the Backend Server:**
 
    ```bash
    python3 app.py
