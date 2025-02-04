@@ -1,6 +1,6 @@
-# Insurewise Chatbot
+# InsureWise Chatbot
 
-Insurewise is a scalable, multilingual chatbot designed to deliver real-time, reliable insights on life insurance information. By leveraging efficient models and retrieval-augmented generation (RAG), Insurewise ensures users get the most accurate, context-aware responses about insurance policies from leading agencies like LIC and MaxLife.
+InsureWise is a scalable, multilingual chatbot designed to deliver real-time, reliable insights on life insurance information. By leveraging efficient models and retrieval-augmented generation (RAG), InsureWise ensures users get the most accurate, context-aware responses about insurance policies from leading agencies like LIC and MaxLife.
 
 ## Table of Contents
 
@@ -19,20 +19,20 @@ Insurewise is a scalable, multilingual chatbot designed to deliver real-time, re
 
 ## Introduction
 
-Insurewise is built on an open-source framework that emphasizes flexibility, transparency, and cost-efficiency. Its design enables effortless scalability and multilingual support, ensuring users from diverse regions have access to accurate and up-to-date life insurance information. With an efficient small language model and a robust RAG-powered backend, Insurewise is poised to handle large volumes of queries while maintaining high accuracy.
+InsureWise is built on an open-source framework that emphasizes flexibility, transparency, and cost-efficiency. Its design enables effortless scalability and multilingual support, ensuring users from diverse regions have access to accurate and up-to-date life insurance information. With an efficient small language model and a robust RAG-powered backend, InsureWise is poised to handle large volumes of queries while maintaining high accuracy.
 
-![Insurewise Screenshot](screenshot.png)
+![InsureWise Screenshot](screenshot.png)
 
 ## Context
 
 - **Scalable and Multilingual:**  
-  Insurewise supports multiple languages, allowing users worldwide to access localized life insurance information.
+  InsureWise supports multiple languages, allowing users worldwide to access localized life insurance information.
 
 - **Open-Source Framework:**  
   The framework promotes transparency, flexibility, and continuous community contributions, ensuring that the system remains up-to-date and adaptable.
 
 - **Efficient Response Generation:**  
-  Leveraging a small language model (Mistral), Insurewise delivers quick, contextually relevant responses even during high-load scenarios.
+  Leveraging a small language model (Mistral), InsureWise delivers quick, contextually relevant responses even during high-load scenarios.
 
 - **Retrieval-Augmented Generation (RAG):**  
   The backend integrates RAG to fetch the latest information from major insurance providers such as LIC and MaxLife, ensuring that users receive accurate and real-time insights.
@@ -146,6 +146,6 @@ This project is licensed under the [MIT License](LICENSE). -->
 
 - Thanks to the open-source community for their contributions and ongoing support.
 - Acknowledgment to Wissen for providing reliable life insurance data.
-- Appreciation for the developers and maintainers of Next.js, Bun, and the Python ecosystem for the robust tools and frameworks that power Insurewise.
+- Appreciation for the developers and maintainers of Next.js, Bun, and the Python ecosystem for the robust tools and frameworks that power InsureWise.
 
-Happy coding and enjoy your journey with Insurewise!
+Happy coding and enjoy your journey with InsureWise!
