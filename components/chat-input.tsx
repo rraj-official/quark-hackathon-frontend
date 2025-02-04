@@ -1,19 +1,64 @@
+// chat-input.tsx
+import { useState, useRef } from "react";
 import { Button } from "./ui/button";
 import Textarea from "react-textarea-autosize";
-import { AiOutlineEnter} from "react-icons/ai";
-import { IoMic} from "react-icons/io5";
+import { AiOutlineEnter } from "react-icons/ai";
+import { IoMic } from "react-icons/io5";
 
 type ChatInputProps = {
   input: string;
   setInput: (input: string) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  // New prop: a function that accepts a recorded file
+  handleFileSubmit?: (file: File) => Promise<void>;
 };
 
 export default function ChatInput({
   input,
   setInput,
   handleSubmit,
+  handleFileSubmit,
 }: ChatInputProps) {
+  // State for managing recording
+  const [isRecording, setIsRecording] = useState(false);
+  const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
+  const recordedChunksRef = useRef<Blob[]>([]);
+
+  const handleMicClick = async () => {
+    if (isRecording) {
+      // Stop recording: this will trigger recorder.onstop below.
+      mediaRecorder?.stop();
+      setIsRecording(false);
+    } else {
+      // Start recording
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const recorder = new MediaRecorder(stream);
+        recordedChunksRef.current = [];
+        recorder.ondataavailable = (event) => {
+          if (event.data.size > 0) {
+            recordedChunksRef.current.push(event.data);
+          }
+        };
+        recorder.onstop = async () => {
+          // Create a blob from the recorded chunks
+          const blob = new Blob(recordedChunksRef.current, { type: "audio/webm" });
+          // Optionally wrap it in a File object (backend may expect a file upload)
+          const file = new File([blob], "recording.webm", { type: "audio/webm" });
+          // Call the provided file-submit callback if available
+          if (handleFileSubmit) {
+            await handleFileSubmit(file);
+          }
+        };
+        recorder.start();
+        setMediaRecorder(recorder);
+        setIsRecording(true);
+      } catch (err) {
+        console.error("Error accessing microphone", err);
+      }
+    }
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -45,7 +90,15 @@ export default function ChatInput({
                 }
               }}
             />
-            <Button size="icon" variant="ghost" className="absolute right-10 top-1/2 -translate-y-1/2 transform"><IoMic/></Button>
+            <Button
+              type="button"
+              onClick={handleMicClick}
+              size="icon"
+              variant="ghost"
+              className="absolute right-10 top-1/2 -translate-y-1/2 transform"
+            >
+              <IoMic color={isRecording ? "red" : "inherit"} />
+            </Button>
             <Button
               type="submit"
               size="icon"

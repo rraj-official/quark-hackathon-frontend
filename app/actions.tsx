@@ -1,17 +1,16 @@
-"use server";
+// actions.tsx
+"use client";
 
 import { CoreMessage } from "ai";
 
 export async function continueConversation(messages: CoreMessage[]) {
   // Perform a POST request to your local server
   console.log(messages);
-  const response = await fetch("http://0.0.0.0:8000/ask", {
+  const response = await fetch("http://127.0.0.1:8000/text", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    // Send the messages array as JSON. Adjust the payload shape if your API expects something different.
-    
     body: JSON.stringify({ messages }),
   });
   
@@ -19,10 +18,26 @@ export async function continueConversation(messages: CoreMessage[]) {
     throw new Error("Failed to fetch from python backend");
   }
 
-  // Assume your local server returns a JSON with a "text" property, e.g. { "text": "assistant reply" }
   const data = await response.json();
-
-  // Return the response text directly
   console.log(data);
+  return data.answer;
+}
+
+// New function to handle file uploads
+export async function continueConversationFile(file: File) {
+  console.log("Sending Voicenote");
+  const formData = new FormData();
+  formData.append("file", file);
+
+  const response = await fetch("http://127.0.0.1:8000/voice", {
+    method: "POST",
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch from python backend");
+  }
+
+  const data = await response.json();
   return data.answer;
 }

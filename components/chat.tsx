@@ -1,3 +1,4 @@
+// chat.tsx
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -7,7 +8,7 @@ import { BsNvidia } from "react-icons/bs";
 import ChatInput from "./chat-input";
 import { FaUserAstronaut } from "react-icons/fa6";
 import { IoLogoVercel } from "react-icons/io5";
-import { continueConversation } from "../app/actions";
+import { continueConversation, continueConversationFile } from "../app/actions";
 import { toast } from "sonner";
 import remarkGfm from "remark-gfm";
 import { MemoizedReactMarkdown } from "./markdown";
@@ -42,6 +43,25 @@ export default function Chat() {
           role: "assistant",
           content: result,
         },
+      ]);
+    } catch (error) {
+      toast.error((error as Error).message);
+    }
+  };
+
+  // New function: handle a recorded file submission
+  const handleFileSubmit = async (file: File) => {
+    // Add a placeholder message for the voice input
+    const newMessages: CoreMessage[] = [
+      ...messages,
+      { content: "[Voice message]", role: "user" },
+    ];
+    setMessages(newMessages);
+    try {
+      const result = await continueConversationFile(file);
+      setMessages([
+        ...newMessages,
+        { role: "assistant", content: result },
       ]);
     } catch (error) {
       toast.error((error as Error).message);
@@ -104,17 +124,23 @@ export default function Chat() {
     );
   }
 
+  // (The rest of your chat UI remains unchanged)
   return (
     <div className="stretch mx-auto w-full max-w-2xl px-4 py-[8rem] pt-24 md:px-0">
       {messages.map((m, i) => (
         <div key={i} className="mb-4 flex items-start p-2">
           <div>
-            {m.role === "user" ? <FaUserAstronaut /> : <IoLogoVercel className="size-4" /> }
+            {m.role === "user" ? (
+              <FaUserAstronaut />
+            ) : (
+              <IoLogoVercel className="size-4" />
+            )}
           </div>
           <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
             <MemoizedReactMarkdown
               remarkPlugins={[remarkGfm]}
-              className="prose prose-sm break-words dark:prose-invert prose-pre:rounded-lg prose-pre:bg-zinc-100 prose-pre:p-4 prose-pre:text-zinc-900 dark:prose-pre:bg-zinc-900 dark:prose-pre:text-zinc-100">
+              className="prose prose-sm break-words dark:prose-invert prose-pre:rounded-lg prose-pre:bg-zinc-100 prose-pre:p-4 prose-pre:text-zinc-900 dark:prose-pre:bg-zinc-900 dark:prose-pre:text-zinc-100"
+            >
               {m.content as string}
             </MemoizedReactMarkdown>
           </div>
@@ -125,6 +151,7 @@ export default function Chat() {
         input={input}
         setInput={setInput}
         handleSubmit={handleSubmit}
+        handleFileSubmit={handleFileSubmit} // pass our new callback
       />
     </div>
   );
