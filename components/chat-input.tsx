@@ -1,6 +1,7 @@
 import { Button } from "./ui/button";
 import Textarea from "react-textarea-autosize";
-import { AiOutlineEnter } from "react-icons/ai";
+import { AiOutlineEnter} from "react-icons/ai";
+import { IoMic} from "react-icons/io5";
 
 type ChatInputProps = {
   input: string;
@@ -44,6 +45,7 @@ export default function ChatInput({
                 }
               }}
             />
+            <Button size="icon" variant="ghost" className="absolute right-10 top-1/2 -translate-y-1/2 transform"><IoMic/></Button>
             <Button
               type="submit"
               size="icon"
@@ -61,9 +63,8 @@ export default function ChatInput({
             target="_blank"
             rel="noopener noreferrer"
             className="md:hover:text-nvidia underline underline-offset-2 transition-all duration-150 ease-linear"
-            href="https://lakshb.dev"
           >
-            lakshb.dev
+            Wissen Technology
           </a>
         </p>
       </div>

@@ -1,104 +1,148 @@
-<h1 align="center">Next.js AI Chatbot — NVIDIA NIM + Vercel AI SDK</h1>
+# Insurewise Chatbot
 
-<p align="center">
+Insurewise is a scalable, multilingual chatbot designed to deliver real-time, reliable insights on life insurance information. By leveraging efficient models and retrieval-augmented generation (RAG), Insurewise ensures users get the most accurate, context-aware responses about insurance policies from leading agencies like LIC and MaxLife.
 
-<img src ="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=nextdotjs&logoColor=white">
-<img src ="https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white">
-<img src ="https://img.shields.io/badge/NVIDIA-76B900.svg?style=for-the-badge&logo=NVIDIA&logoColor=white">
-<img src ="https://img.shields.io/badge/Vercel-000000.svg?style=for-the-badge&logo=Vercel&logoColor=white">
+## Table of Contents
 
-</p>
+- [Introduction](#introduction)
+- [Context](#context)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Quickstart](#quickstart)
+  - [Frontend](#frontend)
+  - [Backend](#backend)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-<a href="https://nvidia-nim.vercel.app/" target="_blank">
-  <img src="https://nvidia-nim.vercel.app/og.png" alt="Banner Image" />
-</a>
+## Introduction
 
-An open-source AI chatbot app template built with Next.js, the Vercel AI SDK and NVIDIA NIM.
+Insurewise is built on an open-source framework that emphasizes flexibility, transparency, and cost-efficiency. Its design enables effortless scalability and multilingual support, ensuring users from diverse regions have access to accurate and up-to-date life insurance information. With an efficient small language model and a robust RAG-powered backend, Insurewise is poised to handle large volumes of queries while maintaining high accuracy.
+
+![Insurewise Screenshot](screenshot.png)
+
+## Context
+
+- **Scalable and Multilingual:**  
+  Insurewise supports multiple languages, allowing users worldwide to access localized life insurance information.
+
+- **Open-Source Framework:**  
+  The framework promotes transparency, flexibility, and continuous community contributions, ensuring that the system remains up-to-date and adaptable.
+
+- **Efficient Response Generation:**  
+  Leveraging a small language model (Mistral), Insurewise delivers quick, contextually relevant responses even during high-load scenarios.
+
+- **Retrieval-Augmented Generation (RAG):**  
+  The backend integrates RAG to fetch the latest information from major insurance providers such as LIC and MaxLife, ensuring that users receive accurate and real-time insights.
 
 ## Features
 
-- [Next.js](https://nextjs.org/) 14 App Router
-- React Server Components (RSCs) for better performance
-- [NVIDIA NIM](https://build.nvidia.com/explore/discover/) API Inference
-- [Vercel AI](https://sdk.vercel.ai/) SDK for streaming chat responses
-- [shadcn/ui](https://ui.shadcn.com/) for UI components
-- [Tailwind CSS](https://tailwindcss.com/) for styling and design
-- custom rate limiter for server actions
-- [Sonner](https://sonner.emilkowal.ski/) for beautiful toast notifications
-- [Vercel OG](https://vercel.com/docs/functions/og-image-generation) for open graph images
+1. **Enriched Information Retrieval from RAG:**  
+   - Provides correct and detailed information on life insurance policies in real time.
+   - Guides users on where to find relevant documents with high accuracy.
 
-## How It Works?
+2. **Multilingual Support:**  
+   - Caters to a global audience by supporting multiple languages.
 
-This template uses the NVIDIA NIM API to fetch the models and make inferences. The Vercel AI SDK is used to stream the responses from the server to the client in real-time.
+3. **Voice Interaction:**  
+   - Enables users to interact with the chatbot using voice commands for a hands-free experience.
 
-## Why custom rate limiter?
+4. **Contextual Conversational Analysis:**  
+   - Maintains conversation context for more natural and intuitive interactions.
 
-NVIDIA NIM provides 1000 credits for free to every new user. So, I've implemented a custom rate limiter to prevent the users from exceeding the limit. The rate limiter is set to 10 request per hour per IP address. You can change the rate limiter settings in the [ratelimit.ts](lib/ratelimit.ts) file when deploying your own version of this template.
+5. **User-Friendly Interface:**  
+   - Offers a simple and crisp UI with options for dark and light mode to enhance usability.
 
-## Models Available via NVIDIA NIM
+## Tech Stack
 
-I've only included text-to-text models in this template. You can easily add more models by following the instructions in the [NVIDIA NIM documentation](https://build.nvidia.com/docs/nim/).
+- **Backend:**
+  - **Language:** Python
+  - **Models:**  
+    - Small language model: **Mistral**
+    - Embedded model: **nomic-embed-text-v1**
+  - **Approach:** Retrieval-Augmented Generation (RAG)
+- **Frontend:**
+  - **Framework:** Next.js
+  - **Package Manager/Dev Server:** Bun
+- **Others:**  
+  Open-source principles ensuring transparency and continuous community improvement.
 
-The models available in this template are:
+## Quickstart
 
-**Google**
+### Frontend
 
-- `gemma-2b`
-- `gemma-2-9b-it`
-- `gemma-2-27b-it`
+1. **Install Dependencies:**
 
-**Meta**
+   ```bash
+   bun install
+   ```
 
-- `llama3-8b-instruct`
-- `llama3-70b-instruct`
+2. **Run the Development Server:**
 
-**NVIDIA**
+   ```bash
+   bun dev
+   ```
 
-- `llama3-chatqa-1.5-8b`
-- `llama3-chatqa-1.5-70b`
-- `nemotron-4-340b-instruct`
+### Backend
 
-**IBM**
+1. **Set Up a Virtual Environment:**
 
-- `granite-8b-code-instruct`
-- `granite-34b-code-instruct`
+   - **macOS/Linux:**
 
-> `Mistral AI` and many other models available via NVIDIA NIM are not working with the Vercel AI SDK at the moment. So, I've excluded them from this template. However, you can still use them with the NVIDIA NIM API directly.
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     ```
 
-## Deploy Your Own
+   - **Windows:**
 
-You can deploy your own version of this template with Vercel by clicking the button below.
+     ```bash
+     python -m venv venv
+     venv\Scripts\activate
+     ```
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Flakshaybhushan%2Fnextjs-nvidia-chatbot&env=NVIDIA_NIM_API_KEY&demo-title=Next.js%20AI%20Chatbot%20%E2%80%94%20NVIDIA%20NIM%20%2B%20Vercel%20AI%20SDK&demo-description=A%20chatbot%20demo%20built%20with%20Next.js%2C%20NVIDIA%20NIM%2C%20and%20Vercel%20AI%20SDK&demo-url=https%3A%2F%2Fnvidia-nim.vercel.app%2F&demo-image=https%3A%2F%2Fnvidia-nim.vercel.app%2Fog.png)
+2. **Install Required Python Packages:**
 
-## Local Development
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-First, you will need to use the environment variables [defined in `.env.example`](.env.example) to create a `.env.local` file in the root of the project. And make sure not to commit your `.env.local` file to the repository.
+3. **Run the Backend Server:**
 
-```bash
-NVIDIA_NIM_API_KEY=
-```
+   ```bash
+   python3 app.py
+   ```
 
-To get the NVIDIA NIM API key, you need to sign up on the [NVIDIA NIM website](https://build.nvidia.com/explore/discover/).
+## Configuration
 
-Then clone the repository and install the dependencies. This project uses `bun` as the package manager.
+Before running the application, ensure you configure any necessary environment variables and configuration files. This may include API keys, model paths, or credentials required to connect to external data sources (e.g., LIC, MaxLife).
 
-```bash
-bun install
-```
+## Usage
 
-Run the development server:
-
-```bash
-bun dev
-```
-
-Now the app should be running at [http://localhost:3000](http://localhost:3000).
+Once both the frontend and backend servers are running, open your browser and navigate to [http://localhost:3000](http://localhost:3000) (or your designated port). Interact with the chatbot using text or voice commands to receive real-time, context-aware responses about various life insurance policies.
 
 ## Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request if you have any ideas or suggestions.
+Contributions are welcome! Please follow these steps to contribute:
 
-## License
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Commit your changes (`git commit -m 'Add YourFeature'`).
+4. Push the branch (`git push origin feature/YourFeature`).
+5. Open a Pull Request detailing your changes.
 
-I don't know what to put here. I'm not a lawyer. Use this template however you want. It's open-source and free to use.
+For major changes, please open an issue first to discuss your proposed changes.
+
+<!-- ## License
+
+This project is licensed under the [MIT License](LICENSE). -->
+
+## Acknowledgments
+
+- Thanks to the open-source community for their contributions and ongoing support.
+- Acknowledgment to Wissen for providing reliable life insurance data.
+- Appreciation for the developers and maintainers of Next.js, Bun, and the Python ecosystem for the robust tools and frameworks that power Insurewise.
+
+Happy coding and enjoy your journey with Insurewise!

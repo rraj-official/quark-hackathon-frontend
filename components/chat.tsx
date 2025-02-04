@@ -59,24 +59,20 @@ export default function Chat() {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-nvidia transition-all duration-150 ease-linear"
-            href="https://build.nvidia.com/explore/discover">
-            NVIDIA NIM
-          </a>{" "}
+            className="hover:text-nvidia hover:cursor-pointer transition-all duration-150 ease-linear">
+            InsureWise
+          {/* </a>{" "}
           +{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"
             className="transition-all duration-150 ease-linear hover:text-blue-600"
             href="https://sdk.vercel.ai/">
-            Vercel AI SDK
+            Vercel AI SDK */}
           </a>{" "}
-          Chatbot Demo
         </h1>
-
+        <h2 className="text-center text-nvidia">by Wissen Technology</h2>
         <div className="mt-6 flex items-center justify-center gap-4">
-          <BsNvidia className="text-nvidia mr-4 size-20" />
-          <span className="text-8xl">+</span>
           <IoLogoVercel className="size-20" />
         </div>
 
@@ -84,27 +80,17 @@ export default function Chat() {
           <h2 className="text-base font-medium">Points to note:</h2>
           <ul className="ml-6 mt-2 flex list-disc flex-col items-start gap-2.5 text-sm text-primary/80">
             <li>
-              Since the NVIDIA&apos;s NIM API Inference only provides{" "}
-              <span className="text-nvidia font-medium">1000 credits</span> for
-              free, I&apos;ve implemented a rate limiter to prevent abuse. If
-              you encounter a rate limit, you can try again{" "}
-              <span className="text-nvidia font-medium">after an hour</span> has
-              elapsed.
+            <span className="text-nvidia font-medium">Insurewise</span>{" "}
+             is designed to scale effortlessly and supports multiple languages, enabling users from diverse regions to access relevant life insurance information.
             </li>
             <li>
-              By testing any model, you assume the risk of any harm caused by
-              any response or output of the model. Please do not upload any
-              confidential information or personal data. Your use is logged for
-              security.
+            Built on an open-source framework, Insurewise ensures flexibility, transparency, and cost-efficiency, promoting continuous community contributions and improvements.
             </li>
             <li>
-              This chatbot is for demonstration purposes only and is not
-              affiliated with either NVIDIA or Vercel in any way.
+            By leveraging a small language model, Insurewise provides quick and contextually relevant responses, ensuring efficient interaction even with large volumes of queries.
             </li>
             <li>
-              All the logos and trademarks are the properties of their
-              respective owners. I do not own any of them. This is a
-              non-commercial project.
+            The RAG-powered backend enables Insurewise to pull the latest, accurate information on life insurance plans from leading agencies like LIC and MaxLife, delivering real-time, reliable insights.
             </li>
           </ul>
         </div>
@@ -122,14 +108,8 @@ export default function Chat() {
     <div className="stretch mx-auto w-full max-w-2xl px-4 py-[8rem] pt-24 md:px-0">
       {messages.map((m, i) => (
         <div key={i} className="mb-4 flex items-start p-2">
-          <div
-            className={cn(
-              "flex size-8 shrink-0 select-none items-center justify-center rounded-lg",
-              m.role === "user"
-                ? "border bg-background"
-                : "bg-nvidia border border-[#628f10] text-primary-foreground",
-            )}>
-            {m.role === "user" ? <FaUserAstronaut /> : <BsNvidia />}
+          <div>
+            {m.role === "user" ? <FaUserAstronaut /> : <IoLogoVercel className="size-4" /> }
           </div>
           <div className="ml-4 flex-1 space-y-2 overflow-hidden px-1">
             <MemoizedReactMarkdown
