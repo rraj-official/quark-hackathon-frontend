@@ -1,8 +1,6 @@
 [**Frontend UI Link**](https://quark-hackathon-frontend.vercel.app/)
 # InsureWise Chatbot
 
-Link: quark-hackathon-frontend.vercel.app (frontend)
-
 InsureWise is a scalable, multilingual chatbot designed to deliver real-time, reliable insights on life insurance information. By leveraging efficient models and retrieval-augmented generation (RAG), InsureWise ensures users get the most accurate, context-aware responses about insurance policies from leading agencies like LIC and MaxLife.
 
 ## Table of Contents
