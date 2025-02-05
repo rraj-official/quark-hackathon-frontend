@@ -6,7 +6,7 @@ import { CoreMessage } from "ai";
 export async function continueConversation(messages: CoreMessage[]) {
   // Perform a POST request to your local server
   console.log(messages);
-  const response = await fetch("http://127.0.0.1:8000/text", {
+  const response = await fetch("http://localhost:8000/text", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

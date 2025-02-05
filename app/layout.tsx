@@ -9,9 +9,9 @@ import { Analytics } from "@vercel/analytics/react";
 const FigtreeFont = Figtree({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Next.js AI Chatbot — NVIDIA NIM + Vercel AI SDK",
+  title: "InsureWise",
   description:
-    "An open-source AI chatbot app template built with Next.js, the Vercel AI SDK and NVIDIA NIM.",
+    "InsureWise",
 };
 
 export default function RootLayout({
