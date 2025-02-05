@@ -1,4 +1,5 @@
 [**Frontend UI Link**](https://quark-hackathon-frontend.vercel.app/)
+
 # InsureWise Chatbot
 
 InsureWise is a scalable, multilingual chatbot designed to deliver real-time, reliable insights on life insurance information. By leveraging efficient models and retrieval-augmented generation (RAG), InsureWise ensures users get the most accurate, context-aware responses about insurance policies from leading agencies like LIC and MaxLife.
@@ -23,6 +24,9 @@ InsureWise is a scalable, multilingual chatbot designed to deliver real-time, re
 InsureWise is built on an open-source framework that emphasizes flexibility, transparency, and cost-efficiency. Its design enables effortless scalability and multilingual support, ensuring users from diverse regions have access to accurate and up-to-date life insurance information. With an efficient small language model and a robust RAG-powered backend, InsureWise is poised to handle large volumes of queries while maintaining high accuracy.
 
 ![InsureWise Screenshot](screenshot.png)
+
+## Video Demo
+https://www.youtube.com/watch?v=zTwVBB9UB9s
 
 ## Context
 
@@ -73,55 +77,105 @@ InsureWise is built on an open-source framework that emphasizes flexibility, tra
 ## Quickstart
 
 ### Frontend
-
 1. **Install Dependencies:**
-
    ```bash
    bun install
    ```
-
 2. **Run the Development Server:**
-
    ```bash
    bun dev
    ```
 
 ### Backend
 1. **Clone the Backend repo:**
-     ```bash
-     git clone https://github.com/rraj-official/quark-hackathon-backend.git
-     ```
-2. **Set Up a Virtual Environment:**
-
-   - **macOS/Linux:**
-
-     ```bash
-     python3 -m venv venv
-     source venv/bin/activate
-     ```
-
-   - **Windows:**
-
-     ```bash
-     python -m venv venv
-     venv\Scripts\activate
-     ```
+   ```bash
+   git clone https://github.com/rraj-official/quark-hackathon-backend.git
+   ```
+2. **Setup Environment:**
+   - **Set Up Ollama Service:**
+     - #### macOS
+       - **Install via Homebrew (Recommended):**
+         ```bash
+         brew install ollama
+         ```
+       - **Manual Installation:**  
+         - Download the latest `.pkg` file from [Ollama’s official website](https://ollama.com).
+         - Open the downloaded file and follow the installation prompts.
+       - **Verify Installation:**
+         ```bash
+         ollama --version
+         ```
+     - #### Linux (Debian/Ubuntu)
+       - **Install using `.deb` package:**
+         ```bash
+         curl -fsSL https://ollama.com/install.sh | sh
+         ```
+       - **Manual Installation:**  
+         - Download the `.deb` package from [Ollama’s official website](https://ollama.com).
+         - Install the package using:
+           ```bash
+           sudo dpkg -i ollama-<version>.deb
+           sudo apt-get install -f  # Fix dependencies if needed
+           ```
+       - **Verify Installation:**
+         ```bash
+         ollama --version
+         ```
+     - #### Windows
+       - **Install via MSI Installer:**  
+         - Download the latest `.msi` installer from [Ollama’s official website](https://ollama.com).
+         - Run the installer and follow the setup instructions.
+       - **Install via Windows Package Manager (winget):**
+         ```bash
+         winget install ollama
+         ```
+       - **Verify Installation:**  
+         Open PowerShell or Command Prompt and run:
+         ```bash
+         ollama --version
+         ```
+   - **Set Up a Virtual Environment:**
+     - **macOS/Linux:**
+       ```bash
+       python3 -m venv venv
+       source venv/bin/activate
+       ```
+     - **Windows:**
+       ```bash
+       python -m venv venv
+       venv\Scripts\activate
+       ```
 
 3. **Install Required Python Packages:**
-
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Run the Backend Server:**
+4. **Start the Translation Server (in a Separate Terminal Window):**
+   In order to enable ***multilingual support***, open a **separate terminal window** and perform the following:
+   - **Activate the Virtual Environment:**
+     - **macOS/Linux:**
+       ```bash
+       source venv/bin/activate
+       ```
+     - **Windows:**
+       ```bash
+       venv\Scripts\activate
+       ```
+   - **Install Requirements (if not already installed):**
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - **Run the Translation Server:**
+     ```bash
+     python translate_server.py
+     ```
 
+5. **Run the Backend Server:**
+   In your original terminal (with the virtual environment activated), start the main backend server:
    ```bash
    python3 app.py
    ```
-
-## Configuration
-
-Before running the application, ensure you configure any necessary environment variables and configuration files. This may include API keys, model paths, or credentials required to connect to external data sources (e.g., LIC, MaxLife).
 
 ## Usage
 
