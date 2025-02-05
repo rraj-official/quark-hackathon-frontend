@@ -4,6 +4,12 @@
 
 InsureWise is a scalable, multilingual chatbot designed to deliver real-time, reliable insights on life insurance information. By leveraging efficient models and retrieval-augmented generation (RAG), InsureWise ensures users get the most accurate, context-aware responses about insurance policies from leading agencies like LIC and MaxLife.
 
+### Authors
+- Rohit Raj
+- Rishabh Gupta
+- Tushita Maheshwari
+- Parv Jain
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -13,7 +19,6 @@ InsureWise is a scalable, multilingual chatbot designed to deliver real-time, re
 - [Quickstart](#quickstart)
   - [Frontend](#frontend)
   - [Backend](#backend)
-- [Configuration](#configuration)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
